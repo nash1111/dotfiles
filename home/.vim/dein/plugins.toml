@@ -3,3 +3,6 @@
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
+
+[[plugins]]
+repo = 'kannokanno/previm'
