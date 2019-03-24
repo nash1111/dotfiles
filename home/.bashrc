@@ -58,7 +58,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1="\t \w \n$"
+    PS1="\t \w \n$ "
 else
     PS1='\w\$ '
 fi
