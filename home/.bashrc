@@ -58,7 +58,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1="\[\e[36m\e[42m\]\t\[\e[0m\]\n\\$ "
+    PS1="\t \w \n$"
 else
     PS1='\w\$ '
 fi
