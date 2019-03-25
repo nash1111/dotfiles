@@ -7,6 +7,10 @@ repo      = 'Shougo/neomru.vim'
 on_source = ['unite.vim']
 
 [[plugins]]
+repo = 'scrooloose/nerdtree'
+on_source = ['unite.vim']
+
+[[plugins]]
 repo = "davidhalter/jedi-vim"
 on_ft = ['python']
 
