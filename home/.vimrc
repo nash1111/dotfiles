@@ -9,7 +9,7 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-let s:dein_path = expand('~/.vim/dein')
+let s:dein_path = expand('~/home/nash1111/dotfiles/home/.vim/dein')
 let s:dein_repo_path = s:dein_path . '/repos/github.com/Shougo/dein.vim'
 
 " dein.vim がなければ github からclone
@@ -23,7 +23,7 @@ endif
 if dein#load_state(s:dein_path)
   call dein#begin(s:dein_path)
 
-  let g:config_dir  = expand('~/.vim/dein/userconfig')
+  let g:config_dir  = expand('~/dotfiles/home/.vim/dein/userconfig')
   let s:toml        = g:config_dir . '/plugins.toml'
   let s:lazy_toml   = g:config_dir . '/plugins_lazy.toml'
 
