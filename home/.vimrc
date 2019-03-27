@@ -4,7 +4,12 @@ set cursorline
 highlight ColorColumn ctermbg=magenta
 call matchadd('colorColumn', '\%81v', 100)
 
+autocmd BufEnter *.md set filetype=markdown
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 "dein Scripts-----------------------------
+
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
@@ -28,6 +33,8 @@ if dein#load_state(s:dein_path)
   let s:lazy_toml   = g:config_dir . '/plugins_lazy.toml'
 
   " TOML 読み込み
+
+  call dein#add('scrooloose/nerdtree')
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
