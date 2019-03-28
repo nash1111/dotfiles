@@ -38,7 +38,7 @@ if dein#load_state(s:dein_path)
   let s:lazy_toml   = g:config_dir . '/plugins_lazy.toml'
 
   " TOML 読み込み
-
+  call dein#add('JuliaEditorSupport/julia-vim')
   call dein#add('scrooloose/nerdtree')
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
