@@ -4,10 +4,11 @@ set cursorline
 highlight ColorColumn ctermbg=magenta
 call matchadd('colorColumn', '\%81v', 100)
 
+
+autocmd BufEnter *.go set filetype=go
+autocmd BufEnter *.md set filetype=markdown
+autocmd BufEnter *.py set filetype=python
 "autocmd BufEnter *.jl set filetype=julia
-"autocmd BufEnter *.py set filetype=python
-"autocmd BufEnter *.md set filetype=markdown
-"autocmd BufEnter *.go set filetype=go
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "dein Scripts-----------------------------

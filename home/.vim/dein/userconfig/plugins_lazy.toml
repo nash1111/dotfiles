@@ -20,6 +20,6 @@ repo = 'kannokanno/previm'
 on_ft = ['markdown']
 
 
-[[plugins]]
-repo = 'JuliaEditorSupport/julia-vim'
-on_ft = ['julia']
+#[[plugins]]
+#repo = 'JuliaEditorSupport/julia-vim'
+#on_ft = ['julia']
