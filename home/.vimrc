@@ -4,7 +4,6 @@ set cursorline
 highlight ColorColumn ctermbg=magenta
 call matchadd('colorColumn', '\%81v', 100)
 
-
 autocmd BufEnter *.go set filetype=go
 autocmd BufEnter *.md set filetype=markdown
 autocmd BufEnter *.py set filetype=python
