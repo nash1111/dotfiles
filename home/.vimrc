@@ -41,7 +41,7 @@ if dein#load_state(s:dein_path)
   call dein#add('scrooloose/nerdtree')
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
+  let g:syntastic_python_checkers = ["flake8"]
   call dein#end()
   call dein#save_state()
 endif
