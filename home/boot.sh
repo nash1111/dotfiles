@@ -1,15 +1,15 @@
 #!/bin/bash
 
 ## ----------------------------
-# ユーザからのキーボードの入力を受け取り、
-# yes と入力されたらスクリプトを実行する、no と入力されたらスクリプトを終了します.
+# choose xonsh or tmux or terminal by [t],[x],[Enter]
 ## ----------------------------
 
-function ConfirmExecution() {
+function boot() {
 
-  echo "---------------------------------------------------------"
-  echo "|Press [x] for xonsh, [t] for tmux, [Enter] for terminal|"
-  echo "---------------------------------------------------------"
+#  echo "---------------------------------------------------------"
+#  echo "|Press [x] for xonsh, [t] for tmux, [Enter] for terminal|"
+#echo "---------------------------------------------------------"
+  cowsay -f dragon Press [x] for xonsh, [t] for tmux, [Enter] for terminal
   read input
 
   if [ -z $input ] ; then
@@ -29,18 +29,17 @@ function ConfirmExecution() {
   else
 
     echo "error"
-    ConfirmExecution
+    boot 
 
   fi
 
 }
 
 # シェルスクリプトの実行を継続するか確認します。
-ConfirmExecution
-
+boot
 #echo "----------------------------"
 #echo "welcome back"
-
+#echo "---------------------------"
 
 
 
