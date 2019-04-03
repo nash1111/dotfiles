@@ -9,7 +9,7 @@ function boot() {
 #  echo "---------------------------------------------------------"
 #  echo "|Press [x] for xonsh, [t] for tmux, [Enter] for terminal|"
 #echo "---------------------------------------------------------"
-  cowsay -f dragon Press [x] for xonsh, [t] for tmux, [Enter] for terminal
+  cowsay -f daemon Press [x] for xonsh, [t] for tmux, [Enter] for terminal
   read input
 
   if [ -z $input ] ; then
@@ -19,7 +19,7 @@ function boot() {
     
 
   elif [ $input = 'x' ] || [ $input = 'X' ] ; then
-
+    
     xonsh
 
   elif [ $input = 't' ] || [ $input = 'T' ] ; then
