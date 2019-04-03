@@ -124,3 +124,4 @@ export PATH="/home/nash1111/anaconda3/bin:$PATH"
 
 chmod 755 "/home/nash1111/dotfiles/home/boot.sh"
 bash "/home/nash1111/dotfiles/home/boot.sh"
+

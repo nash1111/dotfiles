@@ -7,7 +7,7 @@ call matchadd('colorColumn', '\%81v', 100)
 autocmd BufEnter *.go set filetype=go
 autocmd BufEnter *.md set filetype=markdown
 autocmd BufEnter *.py set filetype=python
-"autocmd BufEnter *.jl set filetype=julia
+autocmd BufEnter *.jl set filetype=julia
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "dein Scripts-----------------------------
@@ -36,6 +36,7 @@ if dein#load_state(s:dein_path)
   let s:toml        = g:config_dir . '/plugins.toml'
   let s:lazy_toml   = g:config_dir . '/plugins_lazy.toml'
 
+  let g:previm_open_cmd = 'open -a Google\ Chrome'
   " TOML 読み込み
   call dein#add('JuliaEditorSupport/julia-vim')
   call dein#add('scrooloose/nerdtree')

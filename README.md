@@ -11,4 +11,22 @@ like https://windyakin.hateblo.jp/entry/2017/06/18/182046
 eg) 
 check any changes from latest commit  
 etc...  
-9 add shortcut for :SyntasticCheck
+9 add shortcut for :SyntasticCheck  
+
+## Julia  
+JuliaEditorSupoprt/julia-vim  
+\pi + [tab] →  Unicode pi
+### Todo  
+add Linting tool  
+
+## Python  
+scrooloose/syntastic  
+:SyntasticCheck  
+
+telll-k/vim-autopep8  
+[Shift]+f then, autolint starts  
+you can change shortcut-key by editing vimrc  
+
+ervandew/supertab  
+tab-completion
+
