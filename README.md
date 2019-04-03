@@ -10,4 +10,5 @@ like https://windyakin.hateblo.jp/entry/2017/06/18/182046
 8 add some function to bashlogout  
 eg) 
 check any changes from latest commit  
-etc...
+etc...  
+9 add shortcut for :SyntasticCheck
