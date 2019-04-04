@@ -10,7 +10,7 @@ function boot() {
 #  echo "|Press [x] for xonsh, [t] for tmux, [Enter] for terminal|"
 #echo "---------------------------------------------------------"
   cowsay -f daemon Press [x] for xonsh, [t] for tmux, [Enter] for terminal
-  read input
+  read -n1 input
 
   if [ -z $input ] ; then
 

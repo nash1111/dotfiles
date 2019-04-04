@@ -12,3 +12,5 @@ aliases["vs"] = "vim /etx/ssh/ssh_config"
 aliases["cp"] = "cp -i"
 aliases["rm"] = "rm -i"
 aliases["ju"] = "jupyter notebook"
+
+cowsay -f daemon Welcome to the xonsh shell
