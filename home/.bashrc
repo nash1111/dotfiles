@@ -122,8 +122,8 @@ export PATH="/home/nash1111/anaconda3/bin:$PATH"
 
 # tmux
 
-chmod 755 "/home/nash1111/dotfiles/home/boot.sh"
-bash "/home/nash1111/dotfiles/home/boot.sh"
+# chmod 755 "/home/nash1111/dotfiles/home/boot.sh"
+# bash "/home/nash1111/dotfiles/home/boot.sh"
 
 # added by Miniconda3 4.5.12 installer
 # >>> conda init >>>
