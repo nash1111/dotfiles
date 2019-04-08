@@ -57,12 +57,22 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1="\t \w \n$ "
-else
-    PS1='\w\$ '
-fi
-unset color_prompt force_color_prompt
+#if [ "$color_prompt" = yes ]; then
+#    PS1="\t \w \n$ "
+#else
+#    PS1='\w\$ '
+#fi
+#unset color_prompt force_color_prompt
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUPSTREAM=1
+GIT_PS1_SHOWUNTRACKEDFILES=
+GIT_PS1_SHOWSTASHSTATE=1
+
+export PS1='\[\033[1;32m\]\[\033[00m\]:\[\033[1;34m\]\w\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \n$ '
+
+
+
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
