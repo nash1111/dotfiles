@@ -10,6 +10,7 @@ autocmd BufEnter *.go set filetype=go
 autocmd BufEnter *.md set filetype=markdown
 autocmd BufEnter *.py set filetype=python
 autocmd BufEnter *.jl set filetype=julia
+autocmd BufEnter *.tf set filetype=terraform
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "dein Scripts-----------------------------

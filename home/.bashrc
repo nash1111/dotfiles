@@ -130,6 +130,7 @@ fi
 # added by Anaconda3 installer
 export PATH="/home/nash1111/anaconda3/bin:$PATH"
 
+export PATH="/home/nash1111/terraform-0.11.13:$PATH"
 # tmux
 
 # chmod 755 "/home/nash1111/dotfiles/home/boot.sh"
