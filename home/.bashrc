@@ -130,7 +130,7 @@ fi
 # added by Anaconda3 installer
 export PATH="/home/nash1111/anaconda3/bin:$PATH"
 
-export PATH="/home/nash1111/terraform-0.11.13:$PATH"
+export PATH="/home/nash1111/terraform:$PATH"
 # tmux
 
 # chmod 755 "/home/nash1111/dotfiles/home/boot.sh"
@@ -152,3 +152,9 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/nash1111/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/home/nash1111/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/nash1111/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/home/nash1111/Downloads/google-cloud-sdk/completion.bash.inc'; fi
