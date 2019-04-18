@@ -158,3 +158,6 @@ if [ -f '/home/nash1111/Downloads/google-cloud-sdk/path.bash.inc' ]; then source
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/nash1111/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/home/nash1111/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"
+export PATH='/home/nash1111/dotfiles/commands':"$PATH"
