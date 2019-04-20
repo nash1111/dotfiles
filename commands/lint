@@ -1,6 +1,10 @@
 #!/bin/sh
 
-echo "HelloWorld!"
+echo "flake8 all python file here"
 
-ls -a
+for f in *.py
+do
+  flake8 $f
+done
 
+# autopep8
