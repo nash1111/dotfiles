@@ -33,6 +33,16 @@ repo = 'kannokanno/previm'
 on_ft = ['markdown']
 
 [[plugins]]
+repo = 'tyru/open-browser.vim'
+on_ft = ['markdown']
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown']
+
+
+
+[[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['html']
 
