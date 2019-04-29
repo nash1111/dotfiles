@@ -13,6 +13,11 @@ autocmd BufEnter *.jl set filetype=julia
 autocmd BufEnter *.tf set filetype=terraform
 autocmd BufEnter *.tfstate set filetype=terraform
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+augroup markdown
+  autocmd!
+  autocmd BufEnter *.markdown let s:updatetime_origin = &updatetime | let &updatetime = 100
+  autocmd BufLeave *.markdown let &updatetime = get(s:, 'updatetime_origin', &updatetime)
+augroup END
 
 "dein Scripts-----------------------------
 
@@ -41,6 +46,7 @@ if dein#load_state(s:dein_path)
   let s:lazy_toml   = g:config_dir . '/plugins_lazy.toml'
 
   let g:previm_open_cmd = 'open -a Google\ Chrome'
+  let g:previm_enable_realtime = 1
   " TOML 読み込み
   call dein#add('JuliaEditorSupport/julia-vim')
   call dein#add('scrooloose/nerdtree')

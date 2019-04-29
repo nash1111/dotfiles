@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "flake8 all python file here"
 
@@ -7,4 +7,31 @@ do
   flake8 $f
 done
 
-# autopep8
+function auto() {
+  for f in *.py
+  do
+    autopep8 --in-place --aggressive --aggressive $f
+  done
+}
+
+function ask() {
+  echo "press l for linting, n to pass"
+  read -n1 input
+
+  if [ -z $input] ; then
+    
+    echo "autopep8 denied"
+    exit
+
+  elif [ $input = 'l'] || [ $input = 'L' ] ; then
+    auto
+    exit
+
+  else
+    exit
+  
+  fi
+}
+
+
+ask

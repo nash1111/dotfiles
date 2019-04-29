@@ -1,0 +1,1 @@
+/home/nash1111/dotfiles/home/.vim
