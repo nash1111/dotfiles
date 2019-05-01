@@ -1,0 +1,8 @@
+.*~
+.*.sw?
+yarn.lock
+node_modules
+*.pyc
+deps/build.log
+*.ipynb_checkpoints
+*.js.map

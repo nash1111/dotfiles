@@ -1,0 +1,9 @@
+share/man/man3/zlib.3
+include/zlib.h
+include/zconf.h
+logs/Zlib.log
+lib/libz.a
+lib/pkgconfig/zlib.pc
+lib/libz.so
+lib/libz.so.1.2.11
+lib/libz.so.1

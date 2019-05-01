@@ -1,0 +1,17 @@
+language: julia
+os:
+  - linux
+julia:
+  - 1.0
+  - nightly
+matrix:
+  fast_finish: true
+  allow_failures:
+    - julia: nightly
+notifications:
+  email: false
+before_script:
+  - julia -e 'using Pkg; Pkg.add(PackageSpec(name="Compose", rev="master"))'
+after_success:
+  - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
+  - julia -e 'using Pkg; foreach(x->Pkg.add(strip(x)), readlines(open(joinpath("docs", "REQUIRE")))); include(joinpath("docs", "make.jl"))'

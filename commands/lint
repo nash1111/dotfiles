@@ -7,6 +7,10 @@ do
   flake8 $f
 done
 
+#function aggressive_lint() {
+#  
+#}
+
 function auto() {
   for f in *.py
   do

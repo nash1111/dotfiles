@@ -1,0 +1,140 @@
+`/bin/bash -c "alias ll='ls -la'
+
+vecho() {
+    if [[ \"false\" == \"true\" ]]; then
+        echo \"\$@\"
+    fi
+}
+vecho_red() {
+    (vecho \"\$@\" >&2)
+}
+
+# Save bash history (and optionally echo it out as it happens)
+save_history() {
+    vecho_red \" ---> \$BASH_COMMAND\"
+    history -s \"\$BASH_COMMAND\"
+    history -a
+}
+
+# Save our environment into \`/meta/.env\`, eliminating read-only variables
+# so that this file can be sourced upon entering a debug shell.
+save_env() {
+    set +x
+    set > /meta/.env
+    # Ignore read-only variables
+    for l in BASHOPTS BASH_VERSINFO UID EUID PPID SHELLOPTS; do
+        grep -v \"^\$l=\" /meta/.env > /meta/.env2
+        mv /meta/.env2 /meta/.env
+    done
+    echo \"cd \$(pwd)\" >> /meta/.env
+}
+
+# We do a little sleight-of-hand here; we want to build inside of a tmpfs
+# because \`srcdir\` might be mapped in through a networked filesystem, which
+# totally wrecks our I/O performance.  So what we do instead is bind-mount
+# \`srcdir\` to another location so that we can always get at it, copy its
+# contents to a new tmpfs we mount at the location of \`srcdir\`, then when
+# we exit on an error, we copy everything back over again
+tmpify_srcdir() {
+    vecho \"Copying srcdir to tmpfs...\"
+    mkdir -p \$WORKSPACE/.true_srcdir
+    mount --bind \$WORKSPACE/srcdir \$WORKSPACE/.true_srcdir
+    mount -t tmpfs tmpfs \$WORKSPACE/srcdir
+    rsync -rlptD \$WORKSPACE/.true_srcdir/ \$WORKSPACE/srcdir
+
+    # We may have changed what pwd() means out from underneath ourselves
+    cd \$(pwd)
+}
+
+# Copy our tmpfs version of \`srcdir\` back onto disk.
+save_srcdir() {
+    vecho_red \"Saving srcdir due to previous error...\"
+    rsync -rlptD \$WORKSPACE/srcdir/ \$WORKSPACE/.true_srcdir --delete
+}
+
+# If /meta is mounted, then we want to save history and environment
+if [[ -d /meta ]]; then
+    trap save_history DEBUG
+    trap \"save_env\" EXIT
+    trap \"save_env; save_srcdir\" INT TERM ERR
+fi
+
+# Stop if we hit any errors.
+set -e
+
+# Swap out srcdir from underneath our feet
+tmpify_srcdir
+
+cd \$WORKSPACE/srcdir/zlib-*
+
+# On windows platforms, our ./configure and make invocations differ a bit
+if [[ \${target} == *-w64-mingw* ]]; then
+    EXTRA_CONFIGURE_FLAGS=\"--sharedlibdir=\${prefix}/bin\"
+    EXTRA_MAKE_FLAGS=\"SHAREDLIB=libz.dll SHAREDLIBM=libz-1.dll SHAREDLIBV=libz-1.2.11.dll LDSHAREDLIBC= \"
+fi
+
+./configure \${EXTRA_CONFIGURE_FLAGS} --prefix=\${prefix}
+make install \${EXTRA_MAKE_FLAGS} -j\${nproc}
+
+"`
+Checking for shared library support...
+Building shared library libz.so.1.2.11 with /opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc.
+Checking for size_t... Yes.
+Checking for off64_t... Yes.
+Checking for fseeko... Yes.
+Checking for strerror... Yes.
+Checking for unistd.h... Yes.
+Checking for stdarg.h... Yes.
+Checking whether to use vs[n]printf() or s[n]printf()... using vs[n]printf().
+Checking for vsnprintf() in stdio.h... Yes.
+Checking for return value of vsnprintf()... Yes.
+Checking for attribute(visibility) support... Yes.
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o adler32.o adler32.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o crc32.o crc32.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o deflate.o deflate.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o infback.o infback.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o inffast.o inffast.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o inflate.o inflate.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o inftrees.o inftrees.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o trees.o trees.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o zutil.o zutil.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o compress.o compress.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o uncompr.o uncompr.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzclose.o gzclose.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzlib.o gzlib.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzread.o gzread.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -c -o gzwrite.o gzwrite.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/adler32.o adler32.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/crc32.o crc32.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/deflate.o deflate.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/infback.o infback.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/inffast.o inffast.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/inflate.o inflate.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/inftrees.o inftrees.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/trees.o trees.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/zutil.o zutil.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/compress.o compress.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/uncompr.o uncompr.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/gzclose.o gzclose.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/gzlib.o gzlib.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/gzread.o gzread.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN  -DPIC -c -o objs/gzwrite.o gzwrite.c
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-ar rc libz.a adler32.o crc32.o deflate.o infback.o inffast.o inflate.o inftrees.o trees.o zutil.o compress.o uncompr.o gzclose.o gzlib.o gzread.o gzwrite.o 
+/opt/x86_64-linux-gnu/bin/x86_64-linux-gnu-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map -fPIC -D_LARGEFILE64_SOURCE=1 -DHAVE_HIDDEN -o libz.so.1.2.11 adler32.lo crc32.lo deflate.lo infback.lo inffast.lo inflate.lo inftrees.lo trees.lo zutil.lo compress.lo uncompr.lo gzclose.lo gzlib.lo gzread.lo gzwrite.lo  -lc 
+rm -f libz.so libz.so.1
+ln -s libz.so.1.2.11 libz.so
+ln -s libz.so.1.2.11 libz.so.1
+rm -f /workspace/destdir/lib/libz.a
+cp libz.a /workspace/destdir/lib
+chmod 644 /workspace/destdir/lib/libz.a
+cp libz.so.1.2.11 /workspace/destdir/lib
+chmod 755 /workspace/destdir/lib/libz.so.1.2.11
+rm -f /workspace/destdir/share/man/man3/zlib.3
+cp zlib.3 /workspace/destdir/share/man/man3
+chmod 644 /workspace/destdir/share/man/man3/zlib.3
+rm -f /workspace/destdir/lib/pkgconfig/zlib.pc
+cp zlib.pc /workspace/destdir/lib/pkgconfig
+chmod 644 /workspace/destdir/lib/pkgconfig/zlib.pc
+rm -f /workspace/destdir/include/zlib.h /workspace/destdir/include/zconf.h
+cp zlib.h zconf.h /workspace/destdir/include
+chmod 644 /workspace/destdir/include/zlib.h /workspace/destdir/include/zconf.h

@@ -1,0 +1,9 @@
+[deps]
+Atom = "c52e3926-4ff0-5f6e-af25-54175e0327b1"
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
+Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+IJulia = "7073ff75-c697-5162-941a-fcdaad2a7d2a"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+Juno = "e5e0dc1b-0480-54bc-9374-aad01c23163d"
+RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
