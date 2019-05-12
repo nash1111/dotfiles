@@ -1,1 +1,0 @@
-`/usr/local/bin/patchelf --replace-needed libopenblas64_.so.0 libopenblas64_.so.0 lib/libarpack.so.2.0.0`

@@ -1,6 +1,0 @@
-logs/update_rpath_libopenblas64_.so.0.log
-logs/update_linkage_libarpack.so.2.0.0_libopenblas64_.so.0.log
-logs/ArpackBuilder.log
-lib/libarpack.so
-lib/libarpack.so.2.0.0
-lib/libarpack.so.2

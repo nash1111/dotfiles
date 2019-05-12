@@ -1,8 +1,0 @@
-*.jl.cov
-*.jl.mem
-deps/IntelRDFPMathLib*
-deps/installed_vers
-deps/libbid*.*
-deps/deps.jl
-deps/usr
-deps/build.log

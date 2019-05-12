@@ -1,9 +1,0 @@
-*.jl.cov
-*.jl.*.cov
-*.jl.mem
-*.o
-*.so
-*.dylib
-*.dll
-*~
-\#*

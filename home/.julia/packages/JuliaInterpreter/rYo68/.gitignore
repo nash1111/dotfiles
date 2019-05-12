@@ -1,7 +1,0 @@
-*.jl.cov
-*.jl.*.cov
-*.jl.mem
-src/builtins*.jl
-deps/build.log
-docs/build/
-test/results.md
