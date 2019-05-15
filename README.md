@@ -1,5 +1,5 @@
 ## Docker
-docker built --tag=nash1111/myenv .
+docker build --tag=nash1111/myenv .
 ## Todo
 1 fix previm bag  
 2 install plugins to see LaTeX to Unicode on Markdown  
