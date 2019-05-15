@@ -2,4 +2,4 @@ on: 2.1
 jobs:
   build:
     steps:
-      - docker build =t nash1111/myenv .
+      - docker build -t nash1111/myenv .
