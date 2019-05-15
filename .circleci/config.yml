@@ -1,4 +1,3 @@
 version: 2.1
-jobs:
-  build:
-    - docker build -t nash1111/myenv .
+sample-executor:
+  shell: /bin/bash
