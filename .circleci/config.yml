@@ -1,0 +1,5 @@
+on: 2.1
+jobs:
+  build:
+    steps:
+      - docker build --tag=nash1111/myenv .
