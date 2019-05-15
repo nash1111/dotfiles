@@ -1,3 +1,5 @@
-version: 2.1
-sample-executor:
-  shell: /bin/bash
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: nash1111/myenv:latest
