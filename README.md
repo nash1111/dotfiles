@@ -1,4 +1,9 @@
+## CI status  
+[![CircleCI](https://circleci.com/gh/nash1111/dotfiles.svg?style=svg)](https://circleci.com/gh/nash1111/dotfiles)
+
+
 ## Docker
+
 docker build --tag=nash1111/myenv .
 ## Todo
 1 fix previm bag  
@@ -15,13 +20,16 @@ check any changes from latest commit
 etc...  
 9 add shortcut for :SyntasticCheck  
 
+
 ## Julia  
 JuliaEditorSupoprt/julia-vim  
 \pi + [tab] →  Unicode pi
 ### Todo  
 add Linting tool  
 
+
 ## Python  
+
 scrooloose/syntastic  
 :SyntasticCheck  
 
