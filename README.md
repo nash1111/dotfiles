@@ -1,12 +1,19 @@
-## CI status  
+## CI status
 [![CircleCI](https://circleci.com/gh/nash1111/dotfiles.svg?style=svg)](https://circleci.com/gh/nash1111/dotfiles)
 
 
 ## Docker
-
 docker build --tag=nash1111/myenv .
+
+## CI flow
+Push to Github  
+Dockerhub will build automatically, and the result will send to slack  
+The same goes for circleCI
+
+
 ## Todo
-1 fix previm bag  
+1 fix pre
+vim bag  
 2 install plugins to see LaTeX to Unicode on Markdown  
 3 make dotfiles into Docker image  
 like https://windyakin.hateblo.jp/entry/2017/06/18/182046  
