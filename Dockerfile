@@ -11,3 +11,5 @@ ADD setup.sh /home
 ADD commands /home
 
 ADD home /home
+
+RUN echo hello

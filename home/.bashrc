@@ -162,4 +162,5 @@ if [ -f '/home/nash1111/Downloads/google-cloud-sdk/completion.bash.inc' ]; then 
 export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$PATH"
 export PATH='/home/nash1111/dotfiles/commands':"$PATH"
 
+export PATH='/home/nash1111/julia-1.1.1/bin':"$PATH"
 export PATH='/usr/bin/flutter_linux_v1.5.4-hotfix.2-stable/flutter/bin':"$PATH"
