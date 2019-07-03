@@ -12,6 +12,8 @@ autocmd BufEnter *.py set filetype=python
 autocmd BufEnter *.jl set filetype=julia
 autocmd BufEnter *.tf set filetype=terraform
 autocmd BufEnter *.tfstate set filetype=terraform
+autocmd BufEnter *.dart set filetype=dart
+
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 augroup markdown
   autocmd!
@@ -48,8 +50,10 @@ if dein#load_state(s:dein_path)
   let g:previm_open_cmd = 'open -a Google\ Chrome'
   let g:previm_enable_realtime = 1
   " TOML 読み込み
+  " 常に使うプラグイン群
   call dein#add('JuliaEditorSupport/julia-vim')
   call dein#add('scrooloose/nerdtree')
+  call dein#add('dart-lang/dart-vim-plugin')
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
   let g:syntastic_python_checkers = ["flake8"]

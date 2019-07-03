@@ -163,4 +163,8 @@ export PATH='/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin':"$P
 export PATH='/home/nash1111/dotfiles/commands':"$PATH"
 
 export PATH='/home/nash1111/julia-1.1.1/bin':"$PATH"
+export PATH='/home/nash1111/miniconda3/bin':"$PATH"
+export PATH='/home/nash1111/anaconda3/bin':"$PATH"
 export PATH='/usr/bin/flutter_linux_v1.5.4-hotfix.2-stable/flutter/bin':"$PATH"
+export PATH="$PATH":"/usr/bin/flutter_linux_v1.5.4-hotfix.2-stable/flutter/.pub-cache/bin"
+export PATH='/usr/local/cuda-10.1/lib64':"$PATH"
