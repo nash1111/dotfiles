@@ -1,3 +1,8 @@
+alias ld='lazydocker'
+alias tns='tmux new -s'
+alias tat='tmux a -t'
+alias tls='tmux ls'
+alias lst='tmux ls'
 #cat ~/.bashrc
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
