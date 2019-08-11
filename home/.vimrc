@@ -1,6 +1,10 @@
+colorscheme molokai
+syntax on
+set background=dark
 set nu
 set ruler
 set cursorline
+
 highlight ColorColumn ctermbg=magenta
 call matchadd('colorColumn', '\%81v', 100)
 
@@ -54,6 +58,7 @@ if dein#load_state(s:dein_path)
   call dein#add('JuliaEditorSupport/julia-vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('dart-lang/dart-vim-plugin')
+  call dein#add('tomasr/molokai')
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
   let g:syntastic_python_checkers = ["flake8"]
@@ -71,6 +76,7 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
+
 "End dein Scripts-------------------------
 
 function! Preserve(command)
@@ -97,4 +103,6 @@ function! Autopep8()
     call Preserve(':silent %!autopep8 -')
 endfunction
 
+
+"autopep呼び出し
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>

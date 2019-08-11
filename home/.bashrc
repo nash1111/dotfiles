@@ -1,4 +1,5 @@
 alias ld='lazydocker'
+alias lg='lazygit'
 alias tns='tmux new -s'
 alias tat='tmux a -t'
 alias tls='tmux ls'
@@ -173,3 +174,8 @@ export PATH='/home/nash1111/anaconda3/bin':"$PATH"
 export PATH='/usr/bin/flutter_linux_v1.5.4-hotfix.2-stable/flutter/bin':"$PATH"
 export PATH="$PATH":"/usr/bin/flutter_linux_v1.5.4-hotfix.2-stable/flutter/.pub-cache/bin"
 export PATH='/usr/local/cuda-10.1/lib64':"$PATH"
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+#export GOPATH=/home/nash1111/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
