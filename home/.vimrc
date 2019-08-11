@@ -1,6 +1,3 @@
-colorscheme molokai
-syntax on
-set background=dark
 set nu
 set ruler
 set cursorline
@@ -76,6 +73,10 @@ syntax enable
 if dein#check_install()
   call dein#install()
 endif
+
+colorscheme molokai
+syntax on
+set background=dark
 
 "End dein Scripts-------------------------
 
