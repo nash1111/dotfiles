@@ -1,7 +1,7 @@
 set nu
 set ruler
 set cursorline
-
+let g:airline_theme = 'molokai'
 highlight ColorColumn ctermbg=magenta
 call matchadd('colorColumn', '\%81v', 100)
 
@@ -56,6 +56,8 @@ if dein#load_state(s:dein_path)
   call dein#add('scrooloose/nerdtree')
   call dein#add('dart-lang/dart-vim-plugin')
   call dein#add('tomasr/molokai')
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
   let g:syntastic_python_checkers = ["flake8"]
